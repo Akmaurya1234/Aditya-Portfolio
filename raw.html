@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects Slider</title>
+  <style>
+  :root {
+  --main-color: #00c6ff;
+  --second-bg-color: rgba(255, 255, 255, 0.1);
+  --bg-color: #111;
+  --text-color: #ddd;
+  --text2-color: #000;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+.project-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+  position: relative;
+}
+
+/* LARGE SCREENS */
+@media (min-width: 769px) {
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .project-tile {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    border: 0.2rem solid var(--main-color);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    padding: 10px;
+  }
+
+  .project-tile::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--second-bg-color);
+    z-index: -1;
+    transition: width 0.5s;
+  }
+
+  .project-tile:hover::before {
+    width: 100%;
+  }
+
+  .project-tile:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  .project-thumb {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    display: block;
+  }
+
+  .project-tile:hover .project-thumb {
+    transform: scale(0.92);
+    filter: blur(0.6px);
+    box-shadow:
+      inset 0 0 20px rgba(255, 255, 255, 0.15),
+      0 5px 15px rgba(20, 228, 255, 0.4),
+      0 0 10px var(--main-color);
+  }
+
+  .project-title {
+    font-size: 1.8rem;
+    margin: 10px 0;
+    font-weight: 600;
+    color: var(--text2-color);
+    background: var(--main-color);
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  .project-desc {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    text-align: justify;
+    margin-bottom: 15px;
+  }
+
+  .badge-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .badge {
+    background: linear-gradient(to right, var(--main-color), #0072ff);
+    padding: 4px 12px;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    color: var(--text-color);
+  }
+
+  .project-btn {
+    display: block;
+    margin: 15px auto 0;
+    background: var(--main-color);
+    color: var(--text2-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: 0.5s;
+    text-align: center;
+  }
+
+  .project-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--bg-color);
+    z-index: -1;
+    transition: 0.5s;
+  }
+
+  .project-btn:hover::before {
+    width: 100%;
+  }
+
+  .project-btn:hover {
+    color: var(--main-color);
+  }
+
+  .scroll-btn,
+  .scroll-dots {
+    display: none;
+  }
+}
+
+/* MOBILE SCREENS */
+@media (max-width: 768px) {
+  .projects-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 10px;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .projects-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .project-tile {
+    flex: 0 0 90%;
+    max-width: 90%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    scroll-snap-align: center;
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    transition: transform 0.3s ease;
+    border: 0.2rem solid var(--main-color);
+    margin: 0 auto;
+  }
+
+  .project-tile:hover {
+    transform: perspective(1000px) scale(1.03);
+  }
+
+  .project-thumb {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    display: block;
+  }
+
+  .project-title {
+    font-size: 1.4rem;
+    margin: 10px 0;
+    color: var(--text2-color);
+    background: var(--main-color);
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .project-desc {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-align: justify;
+  }
+
+  .badge-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .badge {
+    background: linear-gradient(to right, var(--main-color), #0072ff);
+    padding: 4px 12px;
+    font-size: 1rem;
+    border-radius: 20px;
+    color: var(--text-color);
+  }
+
+  .project-btn {
+    display: block;
+    margin: 10px auto 0;
+    background: var(--main-color);
+    color: var(--text2-color);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .scroll-btn {
+    position: absolute;
+    bottom: 60px;
+    background: var(--main-color);
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .scroll-btn.left {
+    left: 10px;
+  }
+
+  .scroll-btn.right {
+    right: 10px;
+  }
+
+  .scroll-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    opacity: 0.4;
+    transition: all 0.3s;
+  }
+
+  .dot.active {
+    opacity: 1;
+    background: var(--main-color);
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<div class="project-wrapper">
+  <button class="scroll-btn left">&#60;</button>
+  <button class="scroll-btn right">&#62;</button>
+ <div class="projects-grid" id="scrollArea">
+  <!-- CARD 1 -->
+  <div class="project-tile">
+    <div class="project-thumb-wrapper">
+      <img src="smartlearninghub.PNG" class="project-thumb" alt="Project 1">
+    </div>
+    <div class="project-info">
+      <div class="project-title">E - Learning Web</div>
+      <div class="project-desc">Explore places with Google Maps integration.</div>
+      <div class="badge-box">
+        <div class="badge">HTML</div>
+        <div class="badge">CSS</div>
+        <div class="badge">JS</div>
+      </div>
+      <a href="#" class="project-btn">Live Demo</a>
+    </div>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="project-tile">
+    <div class="project-thumb-wrapper">
+      <img src="virtual assistant.PNG" class="project-thumb" alt="Project 2">
+    </div>
+    <div class="project-info">
+      <div class="project-title">Virtual Assistant</div>
+      <div class="project-desc">Run HTML/CSS/JS in-browser with folder support.</div>
+      <div class="badge-box">
+        <div class="badge">HTML</div>
+        <div class="badge">CSS</div>
+      </div>
+      <a href="#" class="project-btn">Live Demo</a>
+    </div>
+  </div>
+
+  <!-- CARD 3 -->
+
+<div class="project-tile">
+    <div class="project-thumb-wrapper">
+      <img src="decoration.PNG" class="project-thumb" alt="Project 6">
+    </div>
+    <div class="project-info">
+      <div class="project-title">Flower Booking Web</div>
+      <div class="project-desc">Aesthetic flower decor site with email booking.</div>
+      <div class="badge-box">
+        <div class="badge">HTML</div>
+        <div class="badge">CSS</div>
+      </div>
+      <a href="#" class="project-btn">Live Demo</a>
+    </div>
+  </div>
+
+ 
+
+  <!-- CARD 4 -->
+  <div class="project-tile">
+    <div class="project-thumb-wrapper">
+      <img src="tictactoe.PNG" class="project-thumb" alt="Project 4">
+    </div>
+    <div class="project-info">
+      <div class="project-title">Tic-Tac-Toe</div>
+      <div class="project-desc">Login-based secure notes with profile photos.</div>
+      <div class="badge-box">
+        <div class="badge">HTML</div>
+        <div class="badge">JS</div>
+      </div>
+      <a href="#" class="project-btn">Live Demo</a>
+    </div>
+  </div>
+
+  <!-- CARD 5 -->
+  <div class="project-tile">
+    <div class="project-thumb-wrapper">
+      <img src="tc.PNG" class="project-thumb" alt="Project 5">
+    </div>
+    <div class="project-info">
+      <div class="project-title">Temperature Converter</div>
+      <div class="project-desc">HTML quiz with timer, leaderboard, and review.</div>
+      <div class="badge-box">
+        <div class="badge">JS</div>
+        <div class="badge">CSS</div>
+      </div>
+      <a href="#" class="project-btn">Live Demo</a>
+    </div>
+  </div>
+
+  <!-- CARD 6 -->
+   <div class="project-tile">
+    <div class="project-thumb-wrapper">
+      <img src="stopwatch.PNG" class="project-thumb" alt="Project 3">
+    </div>
+    <div class="project-info">
+      <div class="project-title">Stop Watch</div>
+      <div class="project-desc">Dark mode ecommerce with filtering & cart.</div>
+      <div class="badge-box">
+        <div class="badge">HTML</div>
+        <div class="badge">JS</div>
+      </div>
+      <a href="#" class="project-btn">Live Demo</a>
+    </div>
+  </div>
+</div>
+
+
+  <div class="scroll-dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollArea = document.getElementById("scrollArea");
+    const dots = document.querySelectorAll(".dot");
+    const leftBtn = document.querySelector(".scroll-btn.left");
+    const rightBtn = document.querySelector(".scroll-btn.right");
+    const tiles = scrollArea.querySelectorAll(".project-tile");
+
+    let currentIndex = 0;
+    let autoScrollInterval;
+
+    function updateDots(index) {
+      dots.forEach(dot => dot.classList.remove("active"));
+      if (dots[index]) dots[index].classList.add("active");
+    }
+
+    function scrollToIndex(index) {
+      const tile = scrollArea.querySelector(".project-tile");
+      if (!tile) return;
+      const tileWidth = tile.offsetWidth + 20;
+      scrollArea.scrollTo({
+        left: index * tileWidth,
+        behavior: "smooth"
+      });
+      updateDots(index);
+    }
+
+    function startAutoScroll() {
+      if (window.innerWidth <= 768) {
+        clearInterval(autoScrollInterval);
+        autoScrollInterval = setInterval(() => {
+          currentIndex = (currentIndex + 1) % tiles.length;
+          scrollToIndex(currentIndex);
+        }, 2000);
+      }
+    }
+
+    leftBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + tiles.length) % tiles.length;
+      scrollToIndex(currentIndex);
+      restartAutoScroll();
+    });
+
+    rightBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % tiles.length;
+      scrollToIndex(currentIndex);
+      restartAutoScroll();
+    });
+
+    scrollArea.addEventListener("scroll", () => {
+      const tile = scrollArea.querySelector(".project-tile");
+      if (!tile) return;
+      const tileWidth = tile.offsetWidth + 20;
+      const newIndex = Math.round(scrollArea.scrollLeft / tileWidth);
+      if (newIndex !== currentIndex) {
+        currentIndex = newIndex;
+        updateDots(currentIndex);
+      }
+    });
+
+    function restartAutoScroll() {
+      clearInterval(autoScrollInterval);
+      startAutoScroll();
+    }
+
+    // tilt effect
+    tiles.forEach(tile => {
+      tile.addEventListener('mousemove', (e) => {
+        const rect = tile.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * 10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+
+        tile.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+      });
+
+      tile.addEventListener('mouseleave', () => {
+        tile.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      });
+    });
+
+    startAutoScroll();
+  });
+</script>
+
+</body>
+</html>

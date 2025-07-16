@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Potfolio</title>
+    <link href="home.svg" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css">
+    <!-- box icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- header design -->
+    <header class="header">
+        <img src="profile.jpg" alt="logo-profile" class="profile-logo">
+        <svg width="70" height="70" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg"
+            class="logo logo_header">
+            <path
+                d="M314.516 203.174L314.516 349.104L162.117 208.727M314.516 203.174L282.653 203.26M314.516 203.174L337.498 203.26L380.617 170.782L314.516 170.782M162.117 208.727L117.661 170.634L157.117 170.782M162.117 208.727L65.1165 301.139L20.176 301.139L137.099 188.83M200.117 170.782L282.653 96.1739L282.653 170.782M200.117 170.782L282.653 170.782M200.117 170.782L157.117 170.782M282.653 203.26L210.462 202.796L282.653 270.76L282.653 203.26ZM282.653 170.782L314.516 170.782M157.117 170.782L315.751 20.1061L314.516 170.782"
+                stroke-width="10" />
+        </svg>
+        <nav class="navbar">
+
+
+            <!-- SIDE NAV PROFILE BOX -->
+            <div class="mobile-profile">
+                <img src="profile.jpg" alt="Your Photo" class="mobile-photo" />
+                <div class="mobile-info">
+                    <div>
+                        <h3>Aditya Kumar</h3>
+                        <div class="role">Frontend Web Developer</div>
+                    </div>
+                    <i class='bx bx-chevron-down toggle-details-icon' id="toggle-profile"></i>
+                </div>
+            </div>
+
+            <!--  HIDDEN EXTRA INFO -->
+            <div class="extra-details" id="profile-details">
+                <div class="row">
+                    <div class="icon"><i class='bx bx-envelope'></i></div>
+                    <div>
+                        <div class="label">Email</div>
+                        <div class="value">adityakumar96211@gmail.com</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="icon"><i class="bx bx-mobile"></i></div>
+                    <div>
+                        <div class="label">Phone</div>
+                        <div class="value">+91 6389496394</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="icon"><i class="bx bx-briefcase"></i></div>
+                    <div>
+                        <div class="label">Experience</div>
+                        <div class="value">+1 year</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="icon"><i class="bx bx-map-pin"></i></div>
+                    <div>
+                        <div class="label">Location</div>
+                        <div class="value">Kanpur, India</div>
+                    </div>
+                </div>
+            </div>
+            <div class="certificate" id="certificates">
+                <h2 class="heading">Skill <span>Awards</span></h2>
+                <div class="project-wrapper">
+                    <button class="scrl-btn left">&#60;</button>
+                    <button class="scrl-btn right">&#62;</button>
+                    <div class="projects-grid" id="scrlArea">
+
+                        <!-- CARD 1 -->
+                        <div class="cer-tile">
+                            <img src="math quiz.PNG" class="project-thumb" alt="Project 1">
+                            <div class="project-info">
+                                <div class="project-title">Mathematics Quiz Certificate</div>
+                                <div class="project-desc">Explore places with Google Maps integration.</div>
+                                <div class="badge-box">
+                                    <div class="badge">HTML</div>
+                                    <div class="badge">CSS</div>
+                                    <div class="badge">JS</div>
+                                    <div class="badge">Editor</div>
+                                    <div class="badge">Live</div>
+                                </div>
+                                <a href="https://akmaurya1234.github.io/Smart-learning-hub/" class="project-btn"
+                                    target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+
+
+                        <!-- CARD 2 -->
+                        <div class="cer-tile">
+                            <img src="css.PNG" class="project-thumb" alt="Project 2">
+                            <div class="project-info">
+                                <div class="project-title">CSS </div>
+                                <div class="project-desc">Run HTML/CSS/JS in-browser with folder support.</div>
+                                <div class="badge-box">
+                                    <div class="badge">HTML</div>
+                                    <div class="badge">CSS</div>
+                                    <div class="badge">JavaScript</div>
+                                </div>
+                                <a href="https://akmaurya1234.github.io/Virtual-Assistant/" class="project-btn"
+                                    target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+
+
+                        <!-- CARD 3 -->
+                        <div class="cer-tile">
+                            <img src="stopwatch.PNG" class="project-thumb" alt="Project 3">
+                            <div class="project-info">
+                                <div class="project-title">Stop Watch</div>
+                                <div class="project-desc">Dark mode ecommerce with filtering & cart.</div>
+                                <div class="badge-box">
+                                    <div class="badge">HTML</div>
+                                    <div class="badge">CSS</div>
+                                    <div class="badge">JS</div>
+                                </div>
+                                <a href="#" class="project-btn" target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+
+
+                        <!-- CARD 4 -->
+                        <div class="cer-tile">
+                            <img src="tictactoe.PNG" class="project-thumb" alt="Project 4">
+                            <div class="project-info">
+                                <div class="project-title">Tic-Tac-Toe</div>
+                                <div class="project-desc">Login-based secure notes with profile photos.</div>
+                                <div class="badge-box">
+                                    <div class="badge">HTML</div>
+                                    <div class="badge">JS</div>
+                                    <div class="badge">CSS</div>
+                                </div>
+                                <a href="https://akmaurya1234.github.io/SCT_WD_3/" class="project-btn"
+                                    target="_blank">Live
+                                    Demo</a>
+                            </div>
+                        </div>
+
+
+                        <!-- CARD 5 -->
+                        <div class="cer-tile">
+                            <img src="tc.PNG" class="project-thumb" alt="Project 5">
+                            <div class="project-info">
+                                <div class="project-title">Temperature Converter</div>
+                                <div class="project-desc">HTML quiz with timer, leaderboard, and review.</div>
+                                <div class="badge-box">
+                                    <div class="badge">JS</div>
+                                    <div class="badge">HTML</div>
+                                    <div class="badge">CSS</div>
+                                </div>
+                                <a href="https://akmaurya1234.github.io/Temperature-converter/" class="project-btn"
+                                    target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+
+
+                        <!-- CARD 6 -->
+                        <div class="cer-tile">
+                            <img src="decoration.PNG" class="project-thumb" alt="Project 6">
+                            <div class="project-info">
+                                <div class="project-title">Flower Booking Web</div>
+                                <div class="project-desc">Aesthetic flower decor site with email booking.</div>
+                                <div class="badge-box">
+                                    <div class="badge">Booking</div>
+                                    <div class="badge">UI</div>
+                                    <div class="badge">CSS</div>
+                                    <div class="badge">HTML</div>
+                                </div>
+                                <a href="https://akmaurya1234.github.io/Decoration/" class="project-btn"
+                                    target="_blank">Live
+                                    Demo</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Dot indicators -->
+                    <div class="scroll-dots">
+                        <div class="cer-dot active"></div>
+                        <div class="cer-dot"></div>
+                        <div class="cer-dot"></div>
+                        <div class="cer-dot"></div>
+                        <div class="cer-dot"></div>
+                        <div class="cer-dot"></div>
+                    </div>
+                </div>
+            </div>
+            <!--  EXISTING NAV LINKS -->
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+
+            <span class="active-nav"></span>
+            <span class="animate" style="--i:2;"></span>
+
+        </nav>
+        <div class="home-icons">
+
+            <div class="theme-dropdown">
+                <button id="themeToggle" class="icon-btn" title="Theme">
+                    <div class="dot-container" id="dotContainer">
+                        <span class="dot-icon" style="background-color:#3b82f6;"></span>
+                        <span class="dot-icon" style="background-color:#f43f5e;"></span>
+                        <span class="dot-icon" style="background-color:#facc15;"></span>
+                        <span class="dot-icon" style="background-color:#10b981;"></span>
+                    </div>
+                </button>
+
+                <ul id="themeMenu">
+                    <li data-theme="theme-default"><span class="theme-dot" style="background: #081b29;"></span> Default
+                    </li>
+                    <li data-theme="theme-light"><span class="theme-dot" style="background: #FFF;"></span> Light</li>
+                    <li data-theme="theme-dark"><span class="theme-dot" style="background: #000;"></span> Dark</li>
+                    <li data-theme="theme-retro"><span class="theme-dot" style="background: #fef7dc;"></span> Retro</li>
+                    <li data-theme="theme-cyberpunk"><span class="theme-dot" style="background: #f9ff00;"></span>
+                        Cyberpunk
+                    </li>
+                    <li data-theme="theme-valentine"><span class="theme-dot" style="background: #f9d5d9;"></span>
+                        Valentine
+                    </li>
+                    <li data-theme="theme-halloween"><span class="theme-dot"
+                            style="background: #f97316;"></span>Halloween
+                    </li>
+                    <li data-theme="theme-forest"><span class="theme-dot" style="background: #1b4332;"></span>Forest
+                    </li>
+                    <li data-theme="theme-aqua"><span class="theme-dot" style="background: #06b6d4;"></span> Aqua</li>
+                    <li data-theme="theme-black"><span class="theme-dot" style="background: #000;"></span> Black</li>
+                    <li data-theme="theme-coral"><span class="theme-dot" style="background: #ff7f50;"></span> Coral</li>
+                    <li data-theme="theme-midnight"><span class="theme-dot" style="background: #121063;"></span>
+                        Midnight</li>
+                    <li data-theme="theme-gold"><span class="theme-dot" style="background: #facc15;"></span> Gold</li>
+                    <li data-theme="theme-silver"><span class="theme-dot" style="background: #e5e7eb;"></span> Silver
+                    </li>
+                    <li data-theme="theme-bubblegum"><span class="theme-dot" style="background: #ffbfd2;"></span>
+                        Bubblegum
+                    </li>
+                    <li data-theme="theme-space"><span class="theme-dot" style="background: #0c0c26;"></span> Space</li>
+                    <li data-theme="theme-rainforest"><span class="theme-dot" style="background: #014421;"></span>
+                        Rainforest
+                    </li>
+                    <li data-theme="theme-lava"><span class="theme-dot" style="background: #cf1020;"></span> Lava</li>
+                    <li data-theme="theme-sky"><span class="theme-dot" style="background: #cce7ff;"></span> Sky</li>
+                    <li data-theme="theme-night"><span class="theme-dot" style="background: #191970;"></span> Night</li>
+                    <li data-theme="theme-ice"><span class="theme-dot" style="background: #e0f7fa;"></span> Ice</li>
+                    <li data-theme="theme-sunset"><span class="theme-dot" style="background: #ff6f61;"></span> Sunset
+                    </li>
+                    <li data-theme="theme-dawn"><span class="theme-dot" style="background: #ffe4e1;"></span> Dawn</li>
+                    <li data-theme="theme-peach"><span class="theme-dot" style="background: #ffe5b4;"></span> Peach</li>
+                    <li data-theme="theme-mocha"><span class="theme-dot" style="background: #3b2f2f;"></span> Mocha</li>
+                    <li data-theme="theme-ocean"><span class="theme-dot" style="background: #0077be;"></span> Ocean</li>
+                    <li data-theme="theme-rose"><span class="theme-dot" style="background: #ff66cc;"></span> Rose</li>
+                    <li data-theme="theme-sand"><span class="theme-dot" style="background: #f4e2d8;"></span> Sand</li>
+                    <li data-theme="theme-charcoal"><span class="theme-dot" style="background: #36454f;"></span>
+                        Charcoal</li>
+                    <li data-theme="theme-emerald"><span class="theme-dot" style="background: #50c878;"></span> Emerald
+                    </li>
+                    <li data-theme="theme-daisy"><span class="theme-dot" style="background: #fffacd;"></span> Daisy</li>
+                    <li data-theme="theme-grape"><span class="theme-dot" style="background: #6f42c1;"></span> Grape</li>
+                    <li data-theme="theme-indigo"><span class="theme-dot" style="background: #3f51b5;"></span> Indigo
+                    </li>
+                    <li data-theme="theme-flame"><span class="theme-dot" style="background: #e25822;"></span> Flame</li>
+                    <li data-theme="theme-denim"><span class="theme-dot" style="background: #1560bd;"></span> Denim</li>
+                    <li data-theme="theme-cloud"><span class="theme-dot" style="background: #f8f9fa;"></span> Cloud</li>
+                </ul>
+            </div>
+
+            <a href="tel:+916389496394" title="Phone" target="_blank" class="icon-btn"><i class='bx bx-phone'></i></a>
+            <a href="https://wa.me/qr/YXHDPD6RYWRWM1" title="Whatsapp" target="_blank" class="icon-btn"><i
+                    class='bx bxl-whatsapp'></i></a>
+            <span class="animate" style="--i:3;"></span>
+        </div>
+
+        <div class="bx bx-menu" id="menu-icon"><span class="animate" style="--i:2;"></span></div>
+    </header>
+
+    <!-- home section design -->
+    <section class="home show-animate" id="home">
+
+        <div class="home-content">
+            <h1>Hello, I'm <span>Aditya Kumar</span><span class="animate" style="--i:4;"></span></h1>
+            <div class="text-animate">
+                <h3>Front-End Developer</h3>
+                <span class="animate" style="--i:5;"></span>
+            </div>
+            <p>My job is to build websites that are not only functional and
+                user-friendly, but also visually appealing. I bring a personal touch
+                to every project, ensuring your product stands out and is easy to use.
+                <span class="animate" style="--i:4;"></span>
+            </p>
+
+            <div class="btn-box">
+                <a href="https://wa.me/qr/YXHDPD6RYWRWM1" class="btn" target="_blank">Let's Talk</a>
+                <a href="#contact" class="btn">Let's Work</a>
+                <span class="animate" style="--i:5;"></span>
+            </div>
+        </div>
+        <div class="home-imgHover"><svg width="406" height="368" viewBox="0 0 406 368" fill="none"
+                xmlns="http://www.w3.org/2000/svg" class="logo">
+                <path
+                    d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109"
+                    stroke-opacity="1" stroke-width="16" />
+                <path
+                    d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109"
+                    stroke="url(#paint0_linear)" stroke-width="16" />
+                <defs>
+                    <linearGradient id="paint0_linear" x1="205.549" y1="20.0169" x2="204.338" y2="342.461"
+                        gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#1595B6" />
+                        <stop offset="1" stop-color="#1595B6" stop-opacity="0" />
+                    </linearGradient>
+                </defs>
+            </svg>
+
+        </div>
+        <span class="animate home-img" style="--i:6;"></span>
+
+        <div class="home-sci">
+            <a href="https://www.linkedin.com/in/aditya-kumar-39056632a" title="LinkedIn" target="_blank">
+                <i class='bx bxl-linkedin'></i></a>
+            <a href="https://www.youtube.com/@Akmauryaknp" title="YouTube" target="_blank">
+                <i class='bx bxl-youtube'></i></a>
+            <a href="sms:+916389496394" title="Message" target="_blank">
+                <i class='bx bx-message'></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100079263668038" title="Facebook" target="_blank"><i
+                    class='bx bxl-facebook'></i></a>
+            <a href="mailto:adityakumar96211@gmail.com" title="Email" target="_blank">
+                <i class='bx bx-envelope'></i></a>
+            <a href="https://www.instagram.com/_.mauryajii._?utm_source=qr&igsh=NHdxeWNuNWc3MGVz" title="Instagram"
+                target="_blank"><i class='bx bxl-instagram'></i></a>
+            <span class="animate" style="--i:7;"></span>
+        </div>
+    </section>
+
+
+
+
+    <!-- about section design -->
+    <section class="about" id="about">
+        <h2 class="heading">About <span>Me</span><span class="animate scroll" style="--i:1;"></span></h2>
+        <div class="about-section">
+            <div class="about-img">
+                <img src="profile.jpg" alt="profile-image">
+                <span class="circle-spin"></span>
+                <span class="animate scroll" style="--i:2;"></span>
+            </div>
+
+            <div class="about-content">
+                <h3>Hi there! I'm glad to see you here.<span class="animate scroll" style="--i:3;"></span></h3>
+                <p>Hello, I'm Aditya Kumar, a Front-end Developer passionate about creating
+                    wonderful and interactive websites. I specialize in web development and design,
+                    and I enjoy crafting beautiful and intuitive user experiences using HTML and CSS,
+                    and making them interactive with JavaScript. My aim is to bring your message and
+                    identity to life in the most creative way.
+                    <span class="animate scroll" style="--i:4;"></span>
+                </p>
+
+
+                <div class="btn-box btns">
+                    <a href="#contact" class="btn">View Resume</a>
+                    <span class="animate scroll" style="--i:5;"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- education section design -->
+    <section class="education" id="education">
+        <h2 class="heading">My <span>Journey</span><span class="animate scroll" style="--i:1;"></span></h2>
+
+        <div class="education-row">
+            <div class="education-column">
+                <div class="education-box">
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class='bx bxs-calendar'></i> 2024 - Present</div>
+                            <h3>Bachelor's of Computer Application</h3>
+                            <p>Allenhouse Institute of Technology</p>
+                        </div>
+                    </div>
+
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class='bx bxs-calendar'></i> 2023 - 2024</div>
+                            <h3>12th Grade</h3>
+                            <p>M.L.J.L. Inter College, Kanpur UP</p>
+                        </div>
+                    </div>
+
+                    <div class="education-content">
+                        <div class="content">
+                            <div class="year"><i class='bx bxs-calendar'></i> 2021 - 2022</div>
+                            <h3>10th Grade</h3>
+                            <p>M.J.S. Inter College, Fatehpur UP</p>
+                        </div>
+                    </div>
+
+                    <span class="animate scroll" style="--i:3;"></span>
+                </div>
+            </div>
+
+            <div class="education-image">
+                <div class="education-img">
+                    <img src="education.png" alt="education-image">
+                    <span class="animate scroll" style="--i:4;"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- skills section design -->
+    <section class="skills" id="skills">
+        <h2 class="heading">My <span>Skills</span><span class="animate scroll" style="--i:1;"></span></h2>
+
+        <div class="skills-row">
+
+            <!-- Programming Skills -->
+            <div class="skills-column">
+                <h3 class="title">Programming Languages<span class="animate scroll" style="--i:2;"></span></h3>
+                <div class="skills-box">
+                    <div class="skills-content">
+
+                        <!-- C Language -->
+                        <div class="skill-card">
+                            <div class="skill-inner">
+                                <div class="skill-front">
+                                    <img src="c.png" alt="C Language" class="skill-img">
+                                </div>
+                                <div class="skill-back">
+                                    <p>C</p>
+                                    <span class="skill-type">System Programming</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- C++ Language -->
+                        <div class="skill-card">
+                            <div class="skill-inner">
+                                <div class="skill-front">
+                                    <img src="cpp.png" alt="C++ Language" class="skill-img">
+                                </div>
+                                <div class="skill-back">
+                                    <p>C++</p>
+                                    <span class="skill-type">OOP</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- JavaScript -->
+                        <div class="skill-card">
+                            <div class="skill-inner">
+                                <div class="skill-front">
+                                    <img src="javascript.png" alt="JavaScript" class="skill-img">
+                                </div>
+                                <div class="skill-back">
+                                    <p>JavaScript</p>
+                                    <span class="skill-type">Scripting</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Python -->
+                        <div class="skill-card">
+                            <div class="skill-inner">
+                                <div class="skill-front">
+                                    <img src="python.png" alt="Python" class="skill-img">
+                                </div>
+                                <div class="skill-back">
+                                    <p>Python</p>
+                                    <span class="skill-type">Backend / Automation</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PHP -->
+                        <div class="skill-card">
+                            <div class="skill-inner">
+                                <div class="skill-front">
+                                    <img src="php.png" alt="PHP" class="skill-img php-img">
+                                </div>
+                                <div class="skill-back">
+                                    <p>PHP</p>
+                                    <span class="skill-type">Backend</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="animate scroll" style="--i:2;"></span>
+            <!-- Technical Skills -->
+            <div class="skills-column">
+                <h3 class="title">Others<span class="animate scroll" style="--i:3;"></span></h3>
+                <div class="skills-box">
+                    <div class="skills-content">
+
+                        <div class="skill-card">
+                            <div class="skill-inner">
+                                <div class="skill-front">
+                                    <img src="html5.png" alt="HTML">
+                                </div>
+                                <div class="skill-back">
+                                    <p>HTML</p>
+                                    <span class="skill-type">Markup Language</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-inner">
+                                <div class="skill-front">
+                                    <img src="css3.png" alt="CSS">
+                                </div>
+                                <div class="skill-back">
+                                    <p>CSS</p>
+                                    <span class="skill-type">Style Sheets</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-inner">
+                                <div class="skill-front">
+                                    <img src="tal.png" alt="Tailwind CSS">
+                                </div>
+                                <div class="skill-back">
+                                    <p>Tailwind CSS</p>
+                                    <span class="skill-type">Utility Framework</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-inner">
+                                <div class="skill-front">
+                                    <img src="nodejs.png" alt="Node.js">
+                                </div>
+                                <div class="skill-back">
+                                    <p>Node.js</p>
+                                    <span class="skill-type">Backend JS</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-card">
+                            <div class="skill-inner">
+                                <div class="skill-front">
+                                    <img src="github.png" alt="GitHub">
+                                </div>
+                                <div class="skill-back">
+                                    <p>GitHub</p>
+                                    <span class="skill-type">Version Control</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <span class="animate scroll" style="--i:3;"></span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- projects section design -->
+    <section class="projects" id="projects">
+        <h2 class="heading">Web <span>Works</span><span class="animate scroll" style="--i:1;"></span></h2>
+
+        <div class="project-wrapper">
+            <button class="scroll-btn left">&#60;</button>
+            <button class="scroll-btn right">&#62;</button>
+            <div class="projects-grid" id="scrollArea">
+
+                <!-- CARD 1 -->
+                <div class="project-tile">
+    <img src="smartlearninghub.PNG" class="project-thumb" alt="Smart Learning Hub">
+    <div class="project-info">
+        <div class="project-title">Smart Learning Hub</div>
+        <div class="project-desc">
+            Smart Learning Hub is a responsive e-learning site designed for engaging, interactive lessons and a smooth user experience.
+        </div>
+        <div class="badge-box">
+            <div class="badge">HTML</div>
+            <div class="badge">CSS</div>
+            <div class="badge">JS</div>
+            <div class="badge">Live Editor</div>
+        </div>
+        <a href="https://akmaurya1234.github.io/Smart-learning-hub/" class="project-btn" target="_blank">Live Demo</a>
+    </div>
+</div>
+
+                <span class="animate scroll" style="--i:2;"></span>
+
+              <div class="project-tile">
+    <img src="virtual assistant.PNG" class="project-thumb" alt="Virtual Assistant">
+    <div class="project-info">
+        <div class="project-title">Virtual Assistant</div>
+        <div class="project-desc">
+            A basic AI-powered virtual assistant that responds to voice commands, answers simple questions, and opens links—similar to Google Assistant at a beginner level.
+        </div>
+        <div class="badge-box">
+            <div class="badge">HTML</div>
+            <div class="badge">CSS</div>
+            <div class="badge">JavaScript</div>
+        </div>
+        <a href="https://akmaurya1234.github.io/Virtual-Assistant/" class="project-btn" target="_blank">Live Demo</a>
+    </div>
+</div>
+
+                <span class="animate scroll" style="--i:4;"></span>
+
+                <!-- CARD 3 -->
+               <div class="project-tile">
+    <img src="stopwatch.PNG" class="project-thumb" alt="Stop Watch">
+    <div class="project-info">
+        <div class="project-title">Stop Watch</div>
+        <div class="project-desc">
+            A simple and precise stopwatch web app featuring start, stop, and reset functions, built with a clean design and responsive layout.
+        </div>
+        <div class="badge-box">
+            <div class="badge">HTML</div>
+            <div class="badge">CSS</div>
+            <div class="badge">JS</div>
+        </div>
+        <a href="#" class="project-btn" target="_blank">Live Demo</a>
+    </div>
+</div>
+
+                <span class="animate scroll" style="--i:6;"></span>
+                <!-- CARD 4 -->
+               <div class="project-tile">
+    <img src="tictactoe.PNG" class="project-thumb" alt="Tic-Tac-Toe">
+    <div class="project-info">
+        <div class="project-title">Tic-Tac-Toe</div>
+        <div class="project-desc">
+            A classic tic-tac-toe game where two players compete on a 3x3 grid, featuring smooth animations, clean design, and responsive layout for all devices.
+        </div>
+        <div class="badge-box">
+            <div class="badge">HTML</div>
+            <div class="badge">JS</div>
+            <div class="badge">CSS</div>
+        </div>
+        <a href="https://akmaurya1234.github.io/SCT_WD_3/" class="project-btn" target="_blank">Live Demo</a>
+    </div>
+</div>
+
+                <span class="animate scroll" style="--i:3;"></span>
+
+                <!-- CARD 5 -->
+               <div class="project-tile">
+    <img src="tc.PNG" class="project-thumb" alt="Temperature Converter">
+    <div class="project-info">
+        <div class="project-title">Temperature Converter</div>
+        <div class="project-desc">
+            A simple web tool that lets users convert temperatures between Celsius, Fahrenheit, and Kelvin instantly, featuring a clean design and responsive layout.
+        </div>
+        <div class="badge-box">
+            <div class="badge">JS</div>
+            <div class="badge">HTML</div>
+            <div class="badge">CSS</div>
+        </div>
+        <a href="https://akmaurya1234.github.io/Temperature-converter/" class="project-btn" target="_blank">Live Demo</a>
+    </div>
+</div>
+
+                <span class="animate scroll" style="--i:5;"></span>
+
+                <!-- CARD 6 -->
+               <div class="project-tile">
+    <img src="decoration.PNG" class="project-thumb" alt="Flower Booking Web">
+    <div class="project-info">
+        <div class="project-title">Flower Booking Web</div>
+        <div class="project-desc">
+            A beautiful website for browsing floral decorations and booking services online, featuring elegant visuals, smooth UI, and easy email-based reservations.
+        </div>
+        <div class="badge-box">
+            <div class="badge">Booking</div>
+            <div class="badge">UI</div>
+            <div class="badge">CSS</div>
+            <div class="badge">HTML</div>
+        </div>
+        <a href="https://akmaurya1234.github.io/Decoration/" class="project-btn" target="_blank">Live Demo</a>
+    </div>
+</div>
+
+                <span class="animate scroll" style="--i:7;"></span>
+            </div>
+
+            <!-- Dot indicators -->
+            <div class="scroll-dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- contact section design -->
+    <section class="contact" id="contact">
+        <h2 class="heading">Let's <span>Connect</span><span class="animate scroll" style="--i:1;"></span></h2>
+        <div class="main-contact">
+            <img src="contact.svg" alt="">
+            <form id="contactForm">
+                <!-- Spam Protection -->
+                <input type="text" name="_honey" style="display:none">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+
+                <div class="input-box">
+                    <div class="input-field">
+                        <input type="text" placeholder="Full Name" name="name" required>
+                        <span class="focus"></span>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" placeholder="Email" name="email" required>
+                        <span class="focus"></span>
+                    </div>
+
+                    <span class="animate scroll" style="--i:3;"></span>
+                </div>
+                <div class="input-box">
+                    <div class="input-field">
+                        <input type="number" placeholder="Mobile Number" required>
+                        <span class="focus"></span>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" placeholder="Email Subject" required>
+                        <span class="focus"></span>
+                    </div>
+
+                    <span class="animate scroll" style="--i:5;"></span>
+                </div>
+
+                <div class="textarea-field">
+                    <textarea name="message" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
+                    <span class="focus"></span>
+
+                    <span class="animate scroll" style="--i:7;"></span>
+                </div>
+
+                <!-- Google reCAPTCHA Widget -->
+                <div class="g-recaptcha" data-sitekey="6LczfVErAAAAAJs39sWW66VUQUwOWNdHxIXpkLiK" data-theme="dark">
+                </div>
+
+                <div class="btn-box btns">
+                    <button type="submit" class="btn">Submit</button>
+
+                    <span class="animate scroll" style="--i:9;"></span>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Thank You Popup -->
+    <div class="popup" id="thankYouPopup">
+        <div class="popup-content">
+            <h3>Thank You!</h3>
+            <p>Your message has been sent successfully.</p>
+            <button onclick="document.getElementById('thankYouPopup').style.display='none'">Close</button>
+        </div>
+    </div>
+
+    <!-- footer design -->
+    <footer class="footer">
+        <div class="footer-text">
+            <svg width="70" height="70" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg"
+                class="logo logo-footer">
+                <path
+                    d="M314.516 203.174L314.516 349.104L162.117 208.727M314.516 203.174L282.653 203.26M314.516 203.174L337.498 203.26L380.617 170.782L314.516 170.782M162.117 208.727L117.661 170.634L157.117 170.782M162.117 208.727L65.1165 301.139L20.176 301.139L137.099 188.83M200.117 170.782L282.653 96.1739L282.653 170.782M200.117 170.782L282.653 170.782M200.117 170.782L157.117 170.782M282.653 203.26L210.462 202.796L282.653 270.76L282.653 203.26ZM282.653 170.782L314.516 170.782M157.117 170.782L315.751 20.1061L314.516 170.782"
+                    stroke-width="10" />
+            </svg>
+            <p>&copy; Copyright, All
+                Rights Reserved</p>
+            <span class="animate scroll" style="--i:1;"></span>
+        </div>
+        <div class="footer-icons">
+            <a href="https://www.linkedin.com/in/aditya-kumar-39056632a" title="LinkedIn" target="_blank"
+                class="icon-btn">
+                <i class='bx bxl-linkedin'></i>
+            </a>
+            <a href="https://www.youtube.com/@Akmauryaknp" title="YouTube" target="_blank" class="icon-btn">
+                <i class='bx bxl-youtube'></i>
+            </a>
+            <a href="sms:+916389496394" title="Message" target="_blank" class="icon-btn">
+                <i class='bx bx-message'></i>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100079263668038" title="Facebook" target="_blank"
+                class="icon-btn">
+                <i class='bx bxl-facebook'></i>
+            </a>
+            <a href="mailto:adityakumar96211@gmail.com" title="Email" target="_blank" class="icon-btn">
+                <i class='bx bx-envelope'></i>
+            </a>
+            <a href="https://www.instagram.com/_.mauryajii._?utm_source=qr&igsh=NHdxeWNuNWc3MGVz" title="Instagram"
+                target="_blank" class="icon-btn">
+                <i class='bx bxl-instagram'></i>
+            </a>
+        </div>
+
+        <div class="footer-iconTop">
+            <a href="#"><i class='bx bx-up-arrow-alt'></i></a>
+
+            <span class="animate scroll" style="--i:3;"></span>
+        </div>
+    </footer>
+
+    <footer class="mobile-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <a href="#home" class="active"><i class="fas fa-home"></i>Home</a>
+                <a href="#about"><i class="fas fa-user"></i>About</a>
+                <a href="#education"><i class="fas fa-graduation-cap"></i>Edu.</a>
+            </div>
+            <div class="circle-wrapper">
+                <div class="circle" id="circle">
+                    <div class="icons"><a href="https://www.linkedin.com/in/aditya-kumar-39056632a" title="LinkedIn"
+                            target="_blank"><i class='bx bxl-linkedin'></i></a></div>
+                    <div class="icons"><a href="https://www.youtube.com/@Akmauryaknp" title="YouTube" target="_blank"><i
+                                class='bx bxl-youtube'></i></a></div>
+                    <div class="icons"><a href="sms:+916389496394" title="Message" target="_blank"><i
+                                class='bx bx-message'></i></a></div>
+                    <div class="icons"><a href="https://www.facebook.com/profile.php?id=100079263668038"
+                            title="Facebook" target="_blank"><i class='bx bxl-facebook'></i></a></div>
+                    <div class="icons"><a href="mailto:adityakumar96211@gmail.com" title="Email" target="_blank"><i
+                                class='bx bx-envelope'></i></a></div>
+                    <div class="icons"><a
+                            href="https://www.instagram.com/_.mauryajii._?utm_source=qr&igsh=NHdxeWNuNWc3MGVz"
+                            title="Instagram" target="_blank"><i class='bx bxl-instagram'></i></a></div>
+                </div>
+            </div>
+
+            <div class="center-icon" onclick="toggleCircle()">
+                <i class="bx bx-plus" id="toggleIcon"></i>
+            </div>
+            <div class="footer-right">
+
+                <a href="#skills"><i class="fas fa-cogs"></i>Skills</a>
+                <a href="#projects"><i class="fas fa-code"></i>Projects</a>
+                <a href="#contact"><i class="fas fa-envelop"></i>Contact</a>
+            </div>
+        </div>
+        <span class="active-nav"></span>
+    </footer>
+
+
+    <div class="stars" id="stars"></div>
+
+    <!-- Google reCAPTCHA Script -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

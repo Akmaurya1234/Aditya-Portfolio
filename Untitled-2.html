@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects Slider</title>
+  <style>
+  :root {
+  --main-color: #00c6ff;
+  --second-bg-color: rgba(255, 255, 255, 0.1);
+  --bg-color: #111;
+  --text-color: #ddd;
+  --text2-color: #000;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+.project-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+  position: relative;
+}
+
+/* LARGE SCREENS */
+@media (min-width: 769px) {
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .project-tile {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    border: 0.2rem solid var(--main-color);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    padding: 10px;
+  }
+
+  .project-tile::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--second-bg-color);
+    z-index: -1;
+    transition: width 0.5s;
+  }
+
+  .project-tile:hover::before {
+    width: 100%;
+  }
+
+  .project-tile:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  .project-thumb {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    display: block;
+  }
+
+  .project-tile:hover .project-thumb {
+    transform: scale(0.92);
+    filter: blur(0.6px);
+    box-shadow:
+      inset 0 0 20px rgba(255, 255, 255, 0.15),
+      0 5px 15px rgba(20, 228, 255, 0.4),
+      0 0 10px var(--main-color);
+  }
+
+  .project-title {
+    font-size: 1.8rem;
+    margin: 10px 0;
+    font-weight: 600;
+    color: var(--text2-color);
+    background: var(--main-color);
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  .project-desc {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    text-align: justify;
+    margin-bottom: 15px;
+  }
+
+  .badge-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .badge {
+    background: linear-gradient(to right, var(--main-color), #0072ff);
+    padding: 4px 12px;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    color: var(--text-color);
+  }
+
+  .project-btn {
+    display: block;
+    margin: 15px auto 0;
+    background: var(--main-color);
+    color: var(--text2-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: 0.5s;
+    text-align: center;
+  }
+
+  .project-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--bg-color);
+    z-index: -1;
+    transition: 0.5s;
+  }
+
+  .project-btn:hover::before {
+    width: 100%;
+  }
+
+  .project-btn:hover {
+    color: var(--main-color);
+  }
+
+  .scroll-btn,
+  .scroll-dots {
+    display: none;
+  }
+}
+
+/* MOBILE SCREENS */
+@media (max-width: 768px) {
+  .projects-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 10px;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .projects-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .project-tile {
+    flex: 0 0 90%;
+    max-width: 90%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    scroll-snap-align: center;
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    transition: transform 0.3s ease;
+    border: 0.2rem solid var(--main-color);
+    margin: 0 auto;
+  }
+
+  .project-tile:hover {
+    transform: perspective(1000px) scale(1.03);
+  }
+
+  .project-thumb {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    display: block;
+  }
+
+  .project-title {
+    font-size: 1.4rem;
+    margin: 10px 0;
+    color: var(--text2-color);
+    background: var(--main-color);
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .project-desc {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-align: justify;
+  }
+
+  .badge-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .badge {
+    background: linear-gradient(to right, var(--main-color), #0072ff);
+    padding: 4px 12px;
+    font-size: 1rem;
+    border-radius: 20px;
+    color: var(--text-color);
+  }
+
+  .project-btn {
+    display: block;
+    margin: 10px auto 0;
+    background: var(--main-color);
+    color: var(--text2-color);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .scroll-btn {
+    position: absolute;
+    bottom: 60px;
+    background: var(--main-color);
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .scroll-btn.left {
+    left: 10px;
+  }
+
+  .scroll-btn.right {
+    right: 10px;
+  }
+
+  .scroll-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    opacity: 0.4;
+    transition: all 0.3s;
+  }
+
+  .dot.active {
+    opacity: 1;
+    background: var(--main-color);
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<div class="project-wrapper">
+  <button class="scroll-btn left">&#60;</button>
+  <button class="scroll-btn right">&#62;</button>
+ <div class="projects-grid" id="scrollArea">
+  <!-- CARD 1 -->
+  <div class="project-tile">
+    <div class="project-thumb-wrapper">
+      <img src="smartlearninghub.PNG" class="project-thumb" alt="Project 1">
+    </div>
+    <div class="project-info">
+      <div class="project-title">E - Learning Web</div>
+      <div class="project-desc">Explore places with Google Maps integration.</div>
+      <div class="badge-box">
+        <div class="badge">HTML</div>
+        <div class="badge">CSS</div>
+        <div class="badge">JS</div>
+      </div>
+      <a href="#" class="project-btn">Live Demo</a>
+    </div>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="project-tile">
+    <div class="project-thumb-wrapper">
+      <img src="virtual assistant.PNG" class="project-thumb" alt="Project 2">
+    </div>
+    <div class="project-info">
+      <div class="project-title">Virtual Assistant</div>
+      <div class="project-desc">Run HTML/CSS/JS in-browser with folder support.</div>
+      <div class="badge-box">
+        <div class="badge">HTML</div>
+        <div class="badge">CSS</div>
+      </div>
+      <a href="#" class="project-btn">Live Demo</a>
+    </div>
+  </div>
+
+  <!-- CARD 3 -->
+
+<div class="project-tile">
+    <div class="project-thumb-wrapper">
+      <img src="decoration.PNG" class="project-thumb" alt="Project 6">
+    </div>
+    <div class="project-info">
+      <div class="project-title">Flower Booking Web</div>
+      <div class="project-desc">Aesthetic flower decor site with email booking.</div>
+      <div class="badge-box">
+        <div class="badge">HTML</div>
+        <div class="badge">CSS</div>
+      </div>
+      <a href="#" class="project-btn">Live Demo</a>
+    </div>
+  </div>
+
+ 
+
+  <!-- CARD 4 -->
+  <div class="project-tile">
+    <div class="project-thumb-wrapper">
+      <img src="tictactoe.PNG" class="project-thumb" alt="Project 4">
+    </div>
+    <div class="project-info">
+      <div class="project-title">Tic-Tac-Toe</div>
+      <div class="project-desc">Login-based secure notes with profile photos.</div>
+      <div class="badge-box">
+        <div class="badge">HTML</div>
+        <div class="badge">JS</div>
+      </div>
+      <a href="#" class="project-btn">Live Demo</a>
+    </div>
+  </div>
+
+  <!-- CARD 5 -->
+  <div class="project-tile">
+    <div class="project-thumb-wrapper">
+      <img src="tc.PNG" class="project-thumb" alt="Project 5">
+    </div>
+    <div class="project-info">
+      <div class="project-title">Temperature Converter</div>
+      <div class="project-desc">HTML quiz with timer, leaderboard, and review.</div>
+      <div class="badge-box">
+        <div class="badge">JS</div>
+        <div class="badge">CSS</div>
+      </div>
+      <a href="#" class="project-btn">Live Demo</a>
+    </div>
+  </div>
+
+  <!-- CARD 6 -->
+   <div class="project-tile">
+    <div class="project-thumb-wrapper">
+      <img src="stopwatch.PNG" class="project-thumb" alt="Project 3">
+    </div>
+    <div class="project-info">
+      <div class="project-title">Stop Watch</div>
+      <div class="project-desc">Dark mode ecommerce with filtering & cart.</div>
+      <div class="badge-box">
+        <div class="badge">HTML</div>
+        <div class="badge">JS</div>
+      </div>
+      <a href="#" class="project-btn">Live Demo</a>
+    </div>
+  </div>
+</div>
+
+
+  <div class="scroll-dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollArea = document.getElementById("scrollArea");
+    const dots = document.querySelectorAll(".dot");
+    const leftBtn = document.querySelector(".scroll-btn.left");
+    const rightBtn = document.querySelector(".scroll-btn.right");
+    const tiles = scrollArea.querySelectorAll(".project-tile");
+
+    let currentIndex = 0;
+    let autoScrollInterval;
+
+    function updateDots(index) {
+      dots.forEach(dot => dot.classList.remove("active"));
+      if (dots[index]) dots[index].classList.add("active");
+    }
+
+    function scrollToIndex(index) {
+      if (tiles[index]) {
+        tiles[index].scrollIntoView({
+          behavior: 'smooth',
+          inline: 'center',
+          block: 'nearest'
+        });
+        updateDots(index);
+      }
+    }
+
+    function startAutoScroll() {
+      if (window.innerWidth <= 768) {
+        clearInterval(autoScrollInterval);
+        autoScrollInterval = setInterval(() => {
+          currentIndex = (currentIndex + 1) % tiles.length;
+          scrollToIndex(currentIndex);
+        }, 3000);
+      }
+    }
+
+    function restartAutoScroll() {
+      clearInterval(autoScrollInterval);
+      startAutoScroll();
+    }
+
+    leftBtn?.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + tiles.length) % tiles.length;
+      scrollToIndex(currentIndex);
+      restartAutoScroll();
+    });
+
+    rightBtn?.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % tiles.length;
+      scrollToIndex(currentIndex);
+      restartAutoScroll();
+    });
+
+    scrollArea?.addEventListener("scroll", () => {
+      if (window.innerWidth > 768) return;
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+      tiles.forEach((tile, index) => {
+        const rect = tile.getBoundingClientRect();
+        const center = rect.left + rect.width / 2;
+        const viewportCenter = window.innerWidth / 2;
+        const distance = Math.abs(center - viewportCenter);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+      if (closestIndex !== currentIndex) {
+        currentIndex = closestIndex;
+        updateDots(currentIndex);
+      }
+      restartAutoScroll();
+    });
+
+    // Tilt effect
+    tiles.forEach(tile => {
+      tile.addEventListener('mousemove', (e) => {
+        const rect = tile.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * 10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+        tile.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+      });
+      tile.addEventListener('mouseleave', () => {
+        tile.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      });
+    });
+
+    startAutoScroll();
+  });
+</script>
+
+
+</body>
+</html>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollArea = document.getElementById("scrollArea");
+    const dots = document.querySelectorAll(".dot");
+    const leftBtn = document.querySelector(".scroll-btn.left");
+    const rightBtn = document.querySelector(".scroll-btn.right");
+    const tiles = scrollArea.querySelectorAll(".project-tile");
+
+    let currentIndex = 0;
+    let autoScrollInterval;
+
+    function updateDots(index) {
+      dots.forEach(dot => dot.classList.remove("active"));
+      if (dots[index]) dots[index].classList.add("active");
+    }
+
+    function scrollToIndex(index) {
+      const tile = scrollArea.querySelector(".project-tile");
+      if (!tile) return;
+      const tileWidth = tile.offsetWidth + 20;
+      scrollArea.scrollTo({
+        left: index * tileWidth,
+        behavior: "smooth"
+      });
+      updateDots(index);
+    }
+
+    function startAutoScroll() {
+      if (window.innerWidth <= 768) {
+        clearInterval(autoScrollInterval);
+        autoScrollInterval = setInterval(() => {
+          currentIndex = (currentIndex + 1) % tiles.length;
+          scrollToIndex(currentIndex);
+        }, 2000);
+      }
+    }
+
+    leftBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + tiles.length) % tiles.length;
+      scrollToIndex(currentIndex);
+      restartAutoScroll();
+    });
+
+    rightBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % tiles.length;
+      scrollToIndex(currentIndex);
+      restartAutoScroll();
+    });
+
+    scrollArea.addEventListener("scroll", () => {
+      const tile = scrollArea.querySelector(".project-tile");
+      if (!tile) return;
+      const tileWidth = tile.offsetWidth + 20;
+      const newIndex = Math.round(scrollArea.scrollLeft / tileWidth);
+      if (newIndex !== currentIndex) {
+        currentIndex = newIndex;
+        updateDots(currentIndex);
+      }
+    });
+
+    function restartAutoScroll() {
+      clearInterval(autoScrollInterval);
+      startAutoScroll();
+    }
+
+    // tilt effect
+    tiles.forEach(tile => {
+      tile.addEventListener('mousemove', (e) => {
+        const rect = tile.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * 10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+
+        tile.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+      });
+
+      tile.addEventListener('mouseleave', () => {
+        tile.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      });
+    });
+
+    startAutoScroll();
+  });
+</script>
+
+
+
+.scroll-btn {
+    position: absolute;
+    bottom: 40px;
+    transform: translateY(0);
+    background: var(--main-color);
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: none;
+}
+
+  .scroll-btn {
+        display: block;
+    }
+
+    .scroll-btn.left {
+        left: 10px;
+    }
+
+    .scroll-btn.right {
+        right: 20px;
+    }
+
+    .scroll-dots {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        gap: 10px;
+    }
+
+
+
+// project script
+
+ document.addEventListener("DOMContentLoaded", () => {
+    const scrollArea = document.getElementById("scrollArea");
+    const dots = document.querySelectorAll(".dot");
+    const leftBtn = document.querySelector(".scroll-btn.left");
+    const rightBtn = document.querySelector(".scroll-btn.right");
+    const tiles = scrollArea.querySelectorAll(".project-tile");
+
+    let currentIndex = 0;
+    let autoScrollInterval;
+
+    function updateDots(index) {
+      dots.forEach(dot => dot.classList.remove("active"));
+      if (dots[index]) dots[index].classList.add("active");
+    }
+
+    function scrollToIndex(index) {
+      const tile = scrollArea.querySelector(".project-tile");
+      if (!tile) return;
+      const tileWidth = tile.offsetWidth + 20;
+      scrollArea.scrollTo({
+        left: index * tileWidth,
+        behavior: "smooth"
+      });
+      updateDots(index);
+    }
+
+    function startAutoScroll() {
+      if (window.innerWidth <= 768) {
+        clearInterval(autoScrollInterval);
+        autoScrollInterval = setInterval(() => {
+          currentIndex = (currentIndex + 1) % tiles.length;
+          scrollToIndex(currentIndex);
+        }, 4000);
+      }
+    }
+
+    leftBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + tiles.length) % tiles.length;
+      scrollToIndex(currentIndex);
+      restartAutoScroll();
+    });
+
+    rightBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % tiles.length;
+      scrollToIndex(currentIndex);
+      restartAutoScroll();
+    });
+
+    scrollArea.addEventListener("scroll", () => {
+      const tile = scrollArea.querySelector(".project-tile");
+      if (!tile) return;
+      const tileWidth = tile.offsetWidth + 20;
+      const newIndex = Math.round(scrollArea.scrollLeft / tileWidth);
+      if (newIndex !== currentIndex) {
+        currentIndex = newIndex;
+        updateDots(currentIndex);
+      }
+    });
+
+    function restartAutoScroll() {
+      clearInterval(autoScrollInterval);
+      startAutoScroll();
+    }
+
+    // tilt effect
+    tiles.forEach(tile => {
+      tile.addEventListener('mousemove', (e) => {
+        const rect = tile.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * 10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+
+        tile.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+      });
+
+      tile.addEventListener('mouseleave', () => {
+        tile.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      });
+    });
+
+    startAutoScroll();
+  });
+
+
+ 
+
+
+
+
+
+ <div class="certificate" id="certificates">
+                <h2 class="heading">Skill <span>Awards</span></h2>
+                <div class="certificate-wrapper">
+                    <div class="certificate-grid" id="scrollArea">
+
+                        <!-- CARD 1 -->
+                        <div class="project-tile">
+                            <img src="math quiz.PNG" class="project-thumb" alt="Project 1">
+                            <div class="project-info">
+                                <div class="project-title">Mathematics Quiz Certificate</div>
+                                <div class="project-desc">Explore places with Google Maps integration.</div>
+                                <div class="badge-box">
+                                    <div class="badge">HTML</div>
+                                    <div class="badge">CSS</div>
+                                    <div class="badge">JS</div>
+                                    <div class="badge">Editor</div>
+                                    <div class="badge">Live</div>
+                                </div>
+                                <a href="https://akmaurya1234.github.io/Smart-learning-hub/" class="project-btn"
+                                    target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+
+
+                        <!-- CARD 2 -->
+                        <div class="project-tile">
+                            <img src="virtual assistant.PNG" class="project-thumb" alt="Project 2">
+                            <div class="project-info">
+                                <div class="project-title">Virtual Assistant</div>
+                                <div class="project-desc">Run HTML/CSS/JS in-browser with folder support.</div>
+                                <div class="badge-box">
+                                    <div class="badge">HTML</div>
+                                    <div class="badge">CSS</div>
+                                    <div class="badge">JavaScript</div>
+                                </div>
+                                <a href="https://akmaurya1234.github.io/Virtual-Assistant/" class="project-btn"
+                                    target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+
+
+                        <!-- CARD 3 -->
+                        <div class="project-tile">
+                            <img src="stopwatch.PNG" class="project-thumb" alt="Project 3">
+                            <div class="project-info">
+                                <div class="project-title">Stop Watch</div>
+                                <div class="project-desc">Dark mode ecommerce with filtering & cart.</div>
+                                <div class="badge-box">
+                                    <div class="badge">HTML</div>
+                                    <div class="badge">CSS</div>
+                                    <div class="badge">JS</div>
+                                </div>
+                                <a href="#" class="project-btn" target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+
+
+                        <!-- CARD 4 -->
+                        <div class="project-tile">
+                            <img src="tictactoe.PNG" class="project-thumb" alt="Project 4">
+                            <div class="project-info">
+                                <div class="project-title">Tic-Tac-Toe</div>
+                                <div class="project-desc">Login-based secure notes with profile photos.</div>
+                                <div class="badge-box">
+                                    <div class="badge">HTML</div>
+                                    <div class="badge">JS</div>
+                                    <div class="badge">CSS</div>
+                                </div>
+                                <a href="https://akmaurya1234.github.io/SCT_WD_3/" class="project-btn"
+                                    target="_blank">Live
+                                    Demo</a>
+                            </div>
+                        </div>
+
+
+                        <!-- CARD 5 -->
+                        <div class="project-tile">
+                            <img src="tc.PNG" class="project-thumb" alt="Project 5">
+                            <div class="project-info">
+                                <div class="project-title">Temperature Converter</div>
+                                <div class="project-desc">HTML quiz with timer, leaderboard, and review.</div>
+                                <div class="badge-box">
+                                    <div class="badge">JS</div>
+                                    <div class="badge">HTML</div>
+                                    <div class="badge">CSS</div>
+                                </div>
+                                <a href="https://akmaurya1234.github.io/Temperature-converter/" class="project-btn"
+                                    target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+
+
+                        <!-- CARD 6 -->
+                        <div class="project-tile">
+                            <img src="decoration.PNG" class="project-thumb" alt="Project 6">
+                            <div class="project-info">
+                                <div class="project-title">Flower Booking Web</div>
+                                <div class="project-desc">Aesthetic flower decor site with email booking.</div>
+                                <div class="badge-box">
+                                    <div class="badge">Booking</div>
+                                    <div class="badge">UI</div>
+                                    <div class="badge">CSS</div>
+                                    <div class="badge">HTML</div>
+                                </div>
+                                <a href="https://akmaurya1234.github.io/Decoration/" class="project-btn"
+                                    target="_blank">Live
+                                    Demo</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Dot indicators -->
+                    <div class="scroll-dots">
+                        <div class="dot active"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            
+.home-icons a,
+.footer-icons a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: .2rem solid var(--main-color);
+    border-radius: 50%;
+    font-size: 20px;
+    color: var(--main-color);
+    z-index: 1;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.home-icons a:hover,
+.footer-icons a:hover {
+    color: var(--bg-color);
+}
+
+.home-icons a::before,
+.footer-icons a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--main-color);
+    z-index: -1;
+    transition: .5s;
+}
+
+.home-icons a:hover::before,
+.footer-icons a:hover::before {
+    width: 100%;
+}
+
+
+  .circle:hover,
+    .circle:hover * {
+        animation-play-state: paused !important;
+    }
+
+
+
+    .circle-wrapper,
+    .center-icon {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9999 !important;
+        pointer-events: auto;
+    }
+
+
+    .circle-wrapper {
+        width: 130px;
+        height: 130px;
+        bottom: -32px;
+        position: fixed;
+    }
+
+    .center-icon {
+        bottom: 10px;
+        width: 40px;
+        height: 40px;
+        background: var(--main-color);
+        border: .2rem solid var(--main-color);
+        color: #fff;
+        font-size: 20px;
+        font-weight: 400;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+    }
+
+    .center-icon:hover {
+        color: var(--text-color);
+    }
+
+    .center-icon::before {
+        content: '';
+        position: absolute;
+        top: 2;
+        left: 2;
+        width: 0;
+        height: 100%;
+        background: var(--bg-color);
+        z-index: -1;
+        transition: .5s;
+        border-radius: 50%;
+    }
+
+    .center-icon:hover::before {
+        width: 100%;
+    }
+
+    .circle {
+        width: 100%;
+        height: 100%;
+        border: 2px solid rgba(52, 152, 219, 0.4);
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        z-index: 1;
+    }
+
+    .circle.spin {
+        display: block;
+        animation: spin 15s linear infinite;
+    }
+
+
+    .icons {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: #333;
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+        transition: all 0.4s ease-in-out;
+        cursor: pointer;
+    }
+
+    .icons a {
+        color: var(--main-color);
+        text-align: center;
+    }
+
+    .icons.show {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    .icons i {
+        animation: counterSpin 15s linear infinite;
+    }
+
+    .icons:nth-child(1) {
+        top: 0%;
+        left: 50%;
+    }
+
+    .icons:nth-child(2) {
+        top: 25%;
+        left: 94%;
+    }
+
+    .icons:nth-child(3) {
+        top: 75%;
+        left: 94%;
+    }
+
+    .icons:nth-child(4) {
+        top: 100%;
+        left: 50%;
+    }
+
+    .icons:nth-child(5) {
+        top: 75%;
+        left: 7%;
+    }
+
+    .icons:nth-child(6) {
+        top: 25%;
+        left: 7%;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes counterSpin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(-360deg);
+        }
+    }
+
+}
+
+ .mobile-footer {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        background: var(--second-bg-color);
+        border-top: 1px solid var(--text-color);
+        height: 70px;
+        z-index: 1000;
+        width: 100%;
+    }
+
+    .footer-container {
+        position: relative;
+        height: 100%;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-around;
+        margin: 0;
+        padding: 0;
+    }
+
+    .footer-left,
+    .footer-right {
+        display: flex;
+        justify-content: space-around;
+        gap: 10px;
+        align-items: center;
+        height: 100%;
+        width: auto;
+    }
+
+
+    .footer-container a {
+        font-size: 11px;
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .footer-container i {
+        display: block;
+        font-size: 16px;
+        color: var(--text-color);
+        margin-bottom: 2px;
+    }
+}
+
+
+// + icon script
+
+let isOpen = false;
+const circle = document.getElementById("circle");
+const iconss = circle.querySelectorAll(".icons");
+const toggleIcon = document.getElementById("toggleIcon");
+
+function toggleCircle() {
+  if (!isOpen) {
+    toggleIcon.classList.replace("bx-plus", "bx-x");
+    circle.style.display = "block";
+
+    iconss.forEach((icon, i) => {
+      setTimeout(() => {
+        icon.classList.add("show");
+        if (i === iconss.length - 1) {
+          setTimeout(() => {
+            circle.classList.add("spin");
+          }, 400);
+        }
+      }, i * 250);
+    });
+
+    isOpen = true;
+  } else {
+    toggleIcon.classList.replace("bx-x", "bx-plus");
+    iconss.forEach(icon => icon.classList.remove("show"));
+    circle.classList.remove("spin");
+    setTimeout(() => {
+      circle.style.display = "none";
+    }, 500);
+    isOpen = false;
+  }
+}
+
+// Pause spin when hovering any icon
+iconss.forEach(icons => {
+  icons.addEventListener("mouseenter", () => {
+    circle.style.animationPlayState = "paused";
+  });
+  icons.addEventListener("mouseleave", () => {
+    circle.style.animationPlayState = "running";
+  });
+});
+window.addEventListener('scroll', () => {
+  let sections = document.querySelectorAll('section');
+  let links = document.querySelectorAll('.app-footer__link');
+
+  sections.forEach(section => {
+    let top = window.scrollY;
+    let offset = section.offsetTop - 80;
+    let height = section.offsetHeight;
+    let id = section.getAttribute('id');
+
+    if (top >= offset && top < offset + height) {
+      links.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${id}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+});
+
+
+
+home.svg
+
+<svg width="406" height="368" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109" stroke="#3675eb" stroke-opacity="1" stroke-width="16"/>
+<path d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109" stroke="url(#paint0_linear)" stroke-width="16"/>
+<defs>
+<linearGradient id="paint0_linear" x1="205.549" y1="20.0169" x2="204.338" y2="342.461" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1595B6"/>
+<stop offset="1" stop-color="#1595B6" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>
+
+
+
+
+
+and logo.svg
+
+
+
+<svg width="70" height="70" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M314.516 203.174L314.516 349.104L162.117 208.727M314.516 203.174L282.653 203.26M314.516 203.174L337.498 203.26L380.617 170.782L314.516 170.782M162.117 208.727L117.661 170.634L157.117 170.782M162.117 208.727L65.1165 301.139L20.176 301.139L137.099 188.83M200.117 170.782L282.653 96.1739L282.653 170.782M200.117 170.782L282.653 170.782M200.117 170.782L157.117 170.782M282.653 203.26L210.462 202.796L282.653 270.76L282.653 203.26ZM282.653 170.782L314.516 170.782M157.117 170.782L315.751 20.1061L314.516 170.782" stroke="white" stroke-width="10"/>
+</svg>
